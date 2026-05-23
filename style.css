@@ -1,0 +1,616 @@
+/* Base Styles & Variables */
+:root {
+    --primary-color: #ff8fab;
+    --secondary-color: #ffc2d1;
+    --accent-color: #ffe5ec;
+    --yellow-accent: #fcd5ce;
+    --text-main: #5c4d5c;
+    --text-light: #8e7d8e;
+    --white: #ffffff;
+    --bg-gradient: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+    
+    --font-heading: 'Fredoka One', cursive;
+    --font-handwriting: 'Pacifico', cursive;
+    --font-body: 'Nunito', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-main);
+    /* Gradasi panjang yang mulus dari atas ke bawah */
+    background: linear-gradient(to bottom, #ffc2d1 0%, #ffe5ec 20%, #ffffff 40%, #ffe5ec 70%, #ffffff 100%);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Confetti Canvas */
+#confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    text-shadow: 2px 2px 0px var(--white);
+    letter-spacing: 1px;
+}
+
+/* --- Section 1: Hero --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    z-index: 10;
+    padding: 0 20px;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 50px;
+    color: var(--white);
+    text-shadow: 4px 4px 0px var(--primary-color);
+}
+
+.hero h1 .emoji {
+    display: inline-block;
+    animation: wave 2s infinite;
+}
+
+.hero .subtitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px 25px;
+    border-radius: 50px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(255, 143, 171, 0.2);
+}
+
+/* Floating Shapes in Hero */
+.floating-shapes .shape {
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.8;
+    z-index: 1;
+    animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 { top: 15%; left: 10%; animation-delay: 0s; }
+.shape-2 { top: 20%; right: 15%; animation-delay: 1s; }
+.shape-3 { bottom: 25%; left: 15%; animation-delay: 2s; font-size: 2rem; }
+.shape-4 { bottom: 20%; right: 10%; animation-delay: 3s; }
+
+/* Floating Photos in Hero */
+.floating-photos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.floating-photo {
+    position: absolute;
+    animation: float-photo 12s ease-in-out infinite;
+    opacity: 0.85;
+    z-index: -1;
+}
+
+@keyframes float-photo {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+.photo-card {
+    background: var(--white);
+    padding: 8px 8px 25px 8px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    border-radius: 4px;
+}
+
+.photo-card.rot-1 { transform: rotate(-15deg); }
+.photo-card.rot-2 { transform: rotate(10deg); }
+.photo-card.rot-3 { transform: rotate(15deg); }
+.photo-card.rot-4 { transform: rotate(-10deg); }
+
+.ph-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: #999;
+}
+
+.float-p-1 { top: -60px; left: -140px; animation-delay: 0s; }
+.float-p-2 { bottom: 20px; left: -120px; animation-delay: 2s; }
+.float-p-3 { top: -40px; right: -150px; animation-delay: 1s; }
+.float-p-4 { bottom: -20px; right: -110px; animation-delay: 3s; }
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    gap: 5px;
+    font-weight: 700;
+    color: var(--primary-color);
+    z-index: 100;
+    font-size: 0.95rem;
+    transition: opacity 0.1s ease-out;
+}
+
+.scroll-indicator .arrow {
+    font-size: 1.5rem;
+    animation: bounceDown 2s infinite;
+    margin-right: 15px;
+}
+
+/* --- Section 2: Sweet Message --- */
+.message {
+    padding: 100px 20px;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background: var(--bg-gradient);
+    border-radius: 30px;
+    padding: 50px 40px;
+    max-width: 800px;
+    box-shadow: 0 20px 40px rgba(255, 143, 171, 0.2);
+    text-align: center;
+    position: relative;
+    border: 5px solid var(--white);
+    outline: 3px dashed var(--primary-color);
+    outline-offset: -10px;
+}
+
+.card h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.card-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.card-content em {
+    font-family: var(--font-handwriting);
+    font-size: 1.8rem;
+    color: #ff4d6d;
+    display: block;
+    margin-top: 30px;
+}
+
+.decorative-hearts {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 3rem;
+    animation: pulse 2s infinite;
+}
+
+/* --- Section 3: Memories (Gallery) --- */
+.gallery {
+    padding: 100px 20px;
+    background: transparent;
+    text-align: center;
+    overflow: hidden;
+}
+
+.gallery h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.gallery-subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 50px;
+    color: var(--text-light);
+}
+
+.polaroid-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.polaroid {
+    background: var(--white);
+    padding: 15px 15px 30px 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: rotate(-3deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px;
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(4deg);
+    margin-top: 30px;
+}
+
+.polaroid:hover {
+    transform: scale(1.05) rotate(0deg);
+    box-shadow: 0 15px 35px rgba(255, 143, 171, 0.3);
+    z-index: 10;
+}
+
+.polaroid .photo {
+    width: 100%;
+    height: 250px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: #999;
+    overflow: hidden;
+}
+
+.placeholder-1 { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+.placeholder-2 { background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%); }
+.placeholder-3 { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+
+.polaroid .caption {
+    font-family: var(--font-handwriting);
+    font-size: 1.5rem;
+    margin-top: 15px;
+    color: var(--text-main);
+}
+
+.gallery .note {
+    margin-top: 50px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* --- Section 4: Wishes & Cake --- */
+.wishes {
+    padding: 100px 20px;
+    background: transparent;
+    text-align: center;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cake-container {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cake-container h2 {
+    font-size: 3rem;
+    margin: 30px 0 15px;
+}
+
+.cake-container p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.cute-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    font-family: var(--font-heading);
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 0 #ff4d6d, 0 15px 20px rgba(255, 77, 109, 0.4);
+    transition: all 0.2s ease;
+    letter-spacing: 1px;
+}
+
+.cute-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 0 #ff4d6d, 0 20px 25px rgba(255, 77, 109, 0.4);
+}
+
+.cute-btn:active {
+    transform: translateY(8px);
+    box-shadow: 0 0 0 #ff4d6d, 0 5px 10px rgba(255, 77, 109, 0.4);
+}
+
+#wish-message {
+    margin-top: 40px;
+    padding: 20px;
+    background: var(--yellow-accent);
+    border-radius: 20px;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.hidden {
+    display: none;
+}
+
+/* CSS Cake Design */
+.cake {
+    position: relative;
+    width: 250px;
+    height: 200px;
+    margin-top: 50px;
+}
+
+.plate {
+    position: absolute;
+    bottom: -15px;
+    left: -25px;
+    width: 300px;
+    height: 30px;
+    background-color: #f1f5f9;
+    border-radius: 50%;
+    box-shadow: 0 6px 0 #cbd5e1, 0 15px 20px rgba(0,0,0,0.05);
+}
+
+.layer {
+    position: absolute;
+    display: block;
+    width: 250px;
+    border-radius: 8px;
+}
+
+.layer-bottom {
+    bottom: 0;
+    height: 70px;
+    background-color: #ffc2d1;
+    box-shadow: inset 0 -8px 0 rgba(0,0,0,0.05);
+}
+
+.layer-middle {
+    bottom: 70px;
+    left: 10px;
+    width: 230px;
+    height: 60px;
+    background-color: #ffe5ec;
+    border-radius: 8px;
+    box-shadow: inset 0 -8px 0 rgba(0,0,0,0.05);
+}
+
+.layer-top {
+    bottom: 130px;
+    left: 20px;
+    width: 210px;
+    height: 50px;
+    background-color: #ffc2d1;
+    border-radius: 8px;
+    box-shadow: inset 0 -8px 0 rgba(0,0,0,0.05);
+}
+
+.icing {
+    position: absolute;
+    bottom: 175px;
+    left: 15px;
+    width: 220px;
+    height: 30px;
+    background-color: #ffffff;
+    background-image: 
+        radial-gradient(circle at 20% 40%, #ff8fab 3px, transparent 4px),
+        radial-gradient(circle at 40% 60%, #ffd166 3px, transparent 4px),
+        radial-gradient(circle at 60% 30%, #118ab2 3px, transparent 4px),
+        radial-gradient(circle at 80% 50%, #ff9ff3 3px, transparent 4px);
+    border-radius: 20px 20px 10px 10px;
+    box-shadow: 0 5px 0 rgba(0,0,0,0.03);
+}
+
+.drip {
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 0 0 50px 50px;
+}
+
+.drip1 { width: 30px; height: 50px; bottom: 135px; left: 30px; }
+.drip2 { width: 45px; height: 35px; bottom: 150px; left: 90px; }
+.drip3 { width: 35px; height: 60px; bottom: 125px; left: 160px; }
+
+.candle {
+    position: absolute;
+    bottom: 200px;
+    left: 115px;
+    width: 20px;
+    height: 50px;
+    background-color: #ff9ff3;
+    border-radius: 5px;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.7) 10px, rgba(255,255,255,0.7) 20px);
+    box-shadow: inset -4px 0 0 rgba(0,0,0,0.1);
+}
+
+.flame {
+    position: absolute;
+    bottom: 55px;
+    left: 2px;
+    width: 16px;
+    height: 25px;
+    background-color: #ff9f43;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 15px #feca57;
+    animation: flicker 0.5s infinite alternate;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 30px 20px;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+}
+
+/* --- Animations --- */
+@keyframes bounce-in {
+    0% { transform: scale(0.5); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+@keyframes bounceDown {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(10px); }
+    60% { transform: translateY(5px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    75% { transform: rotate(15deg); }
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes flicker {
+    0% { transform: scale(1) rotate(-1deg); opacity: 0.9; }
+    50% { transform: scale(1.1) rotate(1deg); opacity: 1; box-shadow: 0 0 20px #feca57; }
+    100% { transform: scale(0.9) rotate(0deg); opacity: 0.8; }
+}
+
+/* Utility Animation Classes */
+.bounce-in { animation: bounce-in 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+.fade-in { animation: fade-in 1s ease-out forwards; animation-delay: 0.5s; opacity: 0; }
+.fade-in-delayed { animation: fade-in 1s ease-out forwards; animation-delay: 1.5s; opacity: 0; }
+
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    /* Tipografi */
+    .hero h1 { font-size: 2.5rem; }
+    .hero .subtitle { font-size: 1.1rem; padding: 8px 15px; }
+    .card h2 { font-size: 1.8rem; }
+    .gallery h2 { font-size: 2rem; }
+    .cake-container h2 { font-size: 2rem; margin: 15px 0; }
+    
+    /* Spacing & Layout */
+    .message, .gallery, .wishes { padding: 60px 15px; }
+    
+    /* Message Card */
+    .card {
+        padding: 30px 20px;
+        border-width: 3px;
+        outline-offset: -6px;
+        border-radius: 20px;
+    }
+    .card-content p { font-size: 1rem; }
+    .card-content em { font-size: 1.4rem; }
+    .decorative-hearts { font-size: 2rem; top: -15px; right: -15px; }
+
+    /* Gallery */
+    .polaroid { max-width: 260px; margin-top: 15px !important; }
+    .polaroid .photo { height: 200px; }
+    .gallery-subtitle { margin-bottom: 30px; font-size: 1rem; }
+    
+    /* Floating Photos (Hero) */
+    .floating-photo { opacity: 0.85; }
+    .float-p-1 { top: -30px; left: -10px; }
+    .float-p-2 { bottom: 10px; left: -15px; }
+    .float-p-3 { top: -10px; right: -15px; }
+    .float-p-4 { bottom: -20px; right: -5px; }
+    .photo-card { padding: 4px 4px 15px 4px; border-radius: 3px; }
+    .ph-img { width: 50px; height: 50px; }
+    
+    /* Floating Shapes Background */
+    .floating-shapes .shape { font-size: 2rem; }
+    .shape-1 { top: 5%; left: 5%; }
+    .shape-2 { top: 10%; right: 5%; }
+    .shape-3 { bottom: 15%; left: 5%; font-size: 1.5rem; }
+    .shape-4 { bottom: 10%; right: 5%; }
+
+    /* Cake Scaling */
+    .cake {
+        transform: scale(0.75);
+        transform-origin: center;
+        margin-top: 10px;
+        margin-bottom: -30px;
+    }
+    
+    /* Buttons */
+    .cute-btn { padding: 12px 25px; font-size: 1.2rem; }
+    
+    /* Footer */
+    .footer { padding: 20px 15px; font-size: 1rem; }
+}
+
+@media (max-width: 400px) {
+    .hero h1 { font-size: 2.2rem; }
+    .card { padding: 25px 15px; }
+    .cake { transform: scale(0.65); margin-bottom: -50px; }
+}

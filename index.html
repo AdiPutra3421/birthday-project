@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun!</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Confetti Container -->
+    <canvas id="confetti"></canvas>
+
+    <!-- Section 1: Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="bounce-in" style="justify-content: center;">Selamatt<br style="justify-content: center;">Ulang Tahun Sayanggg</h1>
+            <p class="fade-in subtitle">Wish you the best sayanggg</p>
+            <div class="scroll-indicator fade-in-delayed" id="scroll-indicator">
+                <span>Ada lagii dibawah cill,<br>cobaa scroll deh</span>
+                <div class="arrow">↓</div>
+            </div>
+
+            <div class="floating-photos">
+            <div class="floating-photo float-p-1">
+                <div class="photo-card rot-1">
+                    <div class="ph-img placeholder-1"><span>Foto 1</span></div>
+                </div>
+            </div>
+            <div class="floating-photo float-p-2">
+                <div class="photo-card rot-2">
+                    <div class="ph-img placeholder-2"><span>Foto 2</span></div>
+                </div>
+            </div>
+            <div class="floating-photo float-p-3">
+                <div class="photo-card rot-3">
+                    <div class="ph-img placeholder-3"><span>Foto 3</span></div>
+                </div>
+            </div>
+            <div class="floating-photo float-p-4">
+                <div class="photo-card rot-4">
+                    <div class="ph-img placeholder-1"><span>Foto 4</span></div>
+                </div>
+            </div>
+        </div>
+            <div class="floating-shapes">
+                <div class="shape shape-1">🎈</div>
+                <div class="shape shape-2">🎁</div>
+                <div class="shape shape-3">✨</div>
+                <div class="shape shape-4">🎈</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Sweet Message -->
+    <section class="message" id="message">
+        <div class="card reveal">
+            <h2>Alooo BEBEE 💖</h2>
+            <div class="card-content">
+                <p style="text-align: center; font-size: 20px;">lore ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p></p><em>Stay sweet, stay cheerful, and keep shining!</em></p>
+            </div>
+            <div class="decorative-hearts">💕</div>
+        </div>
+    </section>
+
+    <!-- Section 3: Memories (Polaroids) -->
+    <section class="gallery" id="gallery">
+        <h2 class="reveal">Momen Indah Kita 📸</h2>
+        <p class="gallery-subtitle reveal">lorem ipsum dolor sit amet</p>
+        <div class="polaroid-container">
+            <div class="polaroid reveal delay-1">
+                <div class="photo placeholder-1">
+                    <span>Foto 1</span>
+                </div>
+                <div class="caption">lorem ipsum dolor sit amet</div>
+            </div>
+            <div class="polaroid reveal delay-2">
+                <div class="photo placeholder-2">
+                    <span>Foto 2</span>
+                </div>
+                <div class="caption">lorem ipsum dolor sit amet</div>
+            </div>
+            <div class="polaroid reveal delay-3">
+                <div class="photo placeholder-3">
+                    <span>Foto 3</span>
+                </div>
+                <div class="caption">lorem ipsum dolor sit amet</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Wishes & Cake -->
+    <section class="wishes" id="wishes">
+        <div class="cake-container reveal">
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="layer layer-bottom"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="icing"></div>
+                <div class="drip drip1"></div>
+                <div class="drip drip2"></div>
+                <div class="drip drip3"></div>
+                <div class="candle">
+                    <div class="flame" id="flame"></div>
+                </div>
+            </div>
+            <h2>Make a Wish! 🌟</h2>
+            <p>Tutup matamu, ucapkan harapan terbaikmu di dalam hati...</p>
+            <button id="blow-candle-btn" class="cute-btn">Tiup Lilinnya! 🌬️</button>
+            <div id="wish-message" class="hidden">
+                <h3>Yaaay! Selamat Ulang Tahun! 🥳</h3>
+                <p>Semoga semua harapanmu dikabulkan oleh semesta. Have a blast!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Dibuat dengan ❤️ penuh keceriaan</p>
+    </footer>
+
+    <!-- Confetti Script (external library for cool effects) -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
